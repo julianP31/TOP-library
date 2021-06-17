@@ -40,10 +40,10 @@ function displayBooks(array) {
     let readed =document.createElement("div")
     container.classList.add("book")
     for (let i = 0; i < array.length; i++) {
-        title.textContent =  myLibrary[i].title
-        author.textContent =  myLibrary[i].author
-        pages.textContent =  myLibrary[i].pages
-        readed.textContent =  myLibrary[i].read
+        title.textContent = `Title: ${myLibrary[i].title}` 
+        author.textContent =  `Author: ${myLibrary[i].author}`
+        pages.textContent =  `Pages: ${myLibrary[i].pages}`
+        readed.textContent =  `Readed: ${myLibrary[i].read}`
         
         $library.appendChild(container)
         container.appendChild(title)

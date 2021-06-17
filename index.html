@@ -12,34 +12,36 @@
 </head>
 
 <body>
-    <header>library</header>
-    <div>
+    <div class="modal-wrapper">
+        <header>library</header>
         <div class="modal-container">
             <div class="modal modal-close">
-                <button class="btn-close">X</button>
                 <div class="modal-inputs">
-                    <div>
+                    <div class="modal-inputs">
                         <label>insert book title:</label>
                         <input type="text" id="title">
                     </div>
-                    <div>
+                    <div class="modal-inputs">
                         <label>what is its author?</label>
                         <input type="text" id="author">
                     </div>
-                    <div>
+                    <div class="modal-inputs">
                         <label>how many pages does it have? </label>
                         <input type="text" id="pages">
                     </div>
-                    <div>
+                    <div class="modal-inputs">
                         <label>you read it?</label>
                         <input type="text" id="readed">
                     </div>
-                    <button id="btn-add-book">add a new book</button>
-                    <button class="btn-cancel">Cancel</button>
+                    <div class="modal-buttons">
+                        <button id="btn-add-book">add a new book</button>
+                        <button class="btn-cancel">Cancel</button>
+                    </div>
+                   
                 </div>
             </div>
         </div>
-        <button class="modal-call">+</button>
+        <button class="modal-call">Add Book</button>
     </div>
 
     <div id="library"></div>
