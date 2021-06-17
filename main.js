@@ -8,7 +8,7 @@ let $library = document.querySelector("#library")
 
 
 let $btnAddBook = document.querySelector("#btn-add-book").addEventListener("click", function(e){
-    addBookToLibrary($title.value, $author.value, $pages.value, $readed.value)
+    addBookToLibrary($title.value, $author.value, $pages.value, $readed.checked)
     displayBooks(myLibrary)
     closeModal()
     clearAll()
@@ -70,5 +70,5 @@ function clearAll() {
     $title.value = ""
     $author.value = ""
     $pages.value = ""
-    $readed.value = ""
+    $readed.checked = ""
 }

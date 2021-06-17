@@ -26,8 +26,9 @@ header{
     display: flex;
     flex-direction: column;
     padding:25px 0px 0px 10px;
-    background: #78e1f9;
+    background: linear-gradient(87deg, #89f4c6 0%, #00ff84 100%);
     line-height: 40px;
+    border-radius: 5px;
 }
 
 .modal-call{
@@ -39,18 +40,36 @@ header{
 }
 
 .modal-inputs{
-    display: flex;
+    display: grid;
     flex-direction: column;
     margin: 10px 1px 10px 1px;
 }
 
-.modal-buttons{
-    display: flex;
-    justify-content: center;
+#readed{
+    place-self: center;
 }
 
-.modal-inputs button{
+.modal-buttons{
+    display: grid;
+    grid-row: 2;
+    grid-template-columns: 1fr 1fr;
+}
+
+.modal-buttons button{
     background:red;
+    width: 100%;
+    font-size: 1.6em;
+    font-weight: bolder;
+}
+
+#btn-add-book{
+    background:#00ff84;
+    border-radius: 0px 0px 0px 10px;
+}
+
+.btn-cancel{
+    background:rgb(255 17 17 / 81%);
+    border-radius: 0px 0px 10px 0px;
 }
 
 .modal-wrapper{
@@ -83,10 +102,11 @@ header{
     width: 40%;
     height: 60%;
     background-color: #fff;
-    overflow: hidden;
-    display:flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 5fr 1fr;
+    border-radius: 10px;
+    text-align: center;
 }
 
 .btn-close{
