@@ -116,3 +116,32 @@ header{
     width:30px;
     align-self:flex-end;
 }
+
+input.switch {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    width:40px;
+    height:20px;
+    background-color:#fff;
+    border:2px solid #D9DADC;
+    border-radius:50px;
+    -webkit-box-shadow: inset -20px 0px 0px 0px #D9DADC;
+    box-shadow: inset -20px 0px 0px 0px #D9DADC;
+    -webkit-transition-duration: 200ms;
+    transition-duration: 200ms;
+    }
+    input.switch:checked {
+    -webkit-box-shadow: inset 20px 0px 0px 1px #4ed164;
+    box-shadow: inset 20px 0px 0px 1px #4ed164;
+    }
+    input.switch::-ms-check {
+    
+    opacity: 0;
+    }
+
+    .readed-label{
+        display: flex;
+        align-items: center;
+        width: fit-content;
+    }

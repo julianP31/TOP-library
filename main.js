@@ -7,8 +7,6 @@ let $readed = document.querySelector("#readed")
 let $library = document.querySelector("#library")
 let $books = document.querySelectorAll(".book")
 
-
-
 let $btnAddBook = document.querySelector("#btn-add-book").addEventListener("click", function (e) {
   addBookToLibrary($title.value, $author.value, $pages.value, $readed.checked)
   displayBooks(myLibrary)
@@ -45,31 +43,50 @@ function addBookToLibrary(title, author, pages, read) {
 
 function displayBooks(array) {
   let container = document.createElement("div")
+  container.classList.add("book")
+
   let title = document.createElement("div")
   let author = document.createElement("div")
   let pages = document.createElement("div")
-  let readed = document.createElement("div")
+
+  let readed = document.createElement("input")
+  readed.setAttribute("type", "checkbox")
+  readed.classList.add("switch")
+  readed.addEventListener("click", function () {
+    updateReadedStatus(readed.dataset.id)
+  })
+
+  let label = document.createElement("label")
+  label.textContent = "Readed"
+  label.classList.add("readed-label")
+
   let deleteBTN = document.createElement("button")
-  container.classList.add("book")
   deleteBTN.classList.add("delete-btn")
   deleteBTN.textContent = "X"
+
   for (let i = 0; i < array.length; i++) {
     title.textContent = `Title: ${myLibrary[i].title}`
     author.textContent = `Author: ${myLibrary[i].author}`
     pages.textContent = `Pages: ${myLibrary[i].pages}`
-    readed.textContent = `Readed: ${myLibrary[i].read}`
+    readed.checked = myLibrary[i].read
+
     container.dataset.id = myLibrary[i].id;
     deleteBTN.dataset.id = myLibrary[i].id;
+    readed.dataset.id = myLibrary[i].id
+
 
     deleteBTN.addEventListener("click", function () {
       removeChild(deleteBTN.dataset.id);
       removeAbook(deleteBTN.dataset.id);
     })
+
+  
     $library.appendChild(container)
     container.appendChild(title)
     container.appendChild(author)
     container.appendChild(pages)
-    container.appendChild(readed)
+    container.appendChild(label)
+    label.appendChild(readed)
     container.appendChild(deleteBTN)
   }
 }
@@ -82,15 +99,31 @@ function getBTNId() {
   });
 }
 
+function updateReadedStatus(dataID) {
+  let number = parseInt(dataID)
+  let wantedBook = (b) => b.id === number;
+  let index = myLibrary.findIndex(wantedBook)
+  let updateBook= myLibrary[index]
+  if (index === -1) {
+    myLibrary
+  } else {
+    if(updateBook.read === true){
+      updateBook.read = false 
+    } else {
+      updateBook.read = true
+    }
+  }
+}
+
 function removeAbook(dataID) {
   let number = parseInt(dataID)
   let wantedBook = (b) => b.id === number;
   let index = myLibrary.findIndex(wantedBook)
-  if(index === -1){
+  if (index === -1) {
     myLibrary
-  } else{
-  myLibrary.splice(index, 1)
-}
+  } else {
+    myLibrary.splice(index, 1)
+  }
 }
 
 function removeChild(dataID) {
@@ -119,3 +152,4 @@ function clearAll() {
   $pages.value = ""
   $readed.checked = ""
 }
+
