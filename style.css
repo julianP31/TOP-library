@@ -25,9 +25,9 @@ header{
     height: 240px;
     display: flex;
     flex-direction: column;
-    padding:25px 0px 0px 10px;
+    padding:15px 0px 0px 10px;
     background: linear-gradient(87deg, #89f4c6 0%, #00ff84 100%);
-    line-height: 40px;
+    line-height: 45px;
     border-radius: 5px;
 }
 
@@ -123,6 +123,7 @@ input.switch {
     -o-appearance: none;
     width:40px;
     height:20px;
+    margin-left: 10px;
     background-color:#fff;
     border:2px solid #D9DADC;
     border-radius:50px;
@@ -136,7 +137,6 @@ input.switch {
     box-shadow: inset 20px 0px 0px 1px #4ed164;
     }
     input.switch::-ms-check {
-    
     opacity: 0;
     }
 
@@ -145,3 +145,14 @@ input.switch {
         align-items: center;
         width: fit-content;
     }
+
+    .delete-btn{
+        background: rgb(255 255 255 / 0%);
+        border: none;
+        display: flex;
+        align-self: flex-end;
+        margin-right: 10px;
+        width: fit-content;
+        font-weight: 900;
+    }
+    

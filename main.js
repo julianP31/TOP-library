@@ -53,7 +53,7 @@ function displayBooks(array) {
   readed.setAttribute("type", "checkbox")
   readed.classList.add("switch")
   readed.addEventListener("click", function () {
-    updateReadedStatus(readed.dataset.id)
+    updateReadedStatus(searchABook(readed.dataset.id))
   })
 
   let label = document.createElement("label")
@@ -61,8 +61,13 @@ function displayBooks(array) {
   label.classList.add("readed-label")
 
   let deleteBTN = document.createElement("button")
-  deleteBTN.classList.add("delete-btn")
-  deleteBTN.textContent = "X"
+  deleteBTN.classList.add("delete-btn", "material-icons")
+  deleteBTN.textContent = "close"
+  deleteBTN.addEventListener("click", function () {
+    removeChild(deleteBTN.dataset.id);
+    removeAbook(searchABook(deleteBTN.dataset.id));
+  })
+
 
   for (let i = 0; i < array.length; i++) {
     title.textContent = `Title: ${myLibrary[i].title}`
@@ -74,51 +79,38 @@ function displayBooks(array) {
     deleteBTN.dataset.id = myLibrary[i].id;
     readed.dataset.id = myLibrary[i].id
 
-
-    deleteBTN.addEventListener("click", function () {
-      removeChild(deleteBTN.dataset.id);
-      removeAbook(deleteBTN.dataset.id);
-    })
-
-  
     $library.appendChild(container)
+    container.appendChild(deleteBTN)
     container.appendChild(title)
     container.appendChild(author)
     container.appendChild(pages)
     container.appendChild(label)
     label.appendChild(readed)
-    container.appendChild(deleteBTN)
+    
   }
 }
 
-function getBTNId() {
-  $deleteBTN.forEach((button) => {
-    button.addEventListener('click', () => {
-      return console.log(button.dataset.id);
-    });
-  });
-}
-
-function updateReadedStatus(dataID) {
+function searchABook(dataID) {
   let number = parseInt(dataID)
   let wantedBook = (b) => b.id === number;
   let index = myLibrary.findIndex(wantedBook)
-  let updateBook= myLibrary[index]
+  return index
+}
+
+function updateReadedStatus(index) {
+  let updateBook = myLibrary[index]
   if (index === -1) {
     myLibrary
   } else {
-    if(updateBook.read === true){
-      updateBook.read = false 
+    if (updateBook.read === true) {
+      updateBook.read = false
     } else {
       updateBook.read = true
     }
   }
 }
 
-function removeAbook(dataID) {
-  let number = parseInt(dataID)
-  let wantedBook = (b) => b.id === number;
-  let index = myLibrary.findIndex(wantedBook)
+function removeAbook(index) {
   if (index === -1) {
     myLibrary
   } else {
@@ -131,7 +123,6 @@ function removeChild(dataID) {
 
   if (child) child.remove();
 };
-
 
 const modal = document.querySelector(".modal-container")
 const openModal = document.querySelector(".modal-call").addEventListener("click", function (e) {
